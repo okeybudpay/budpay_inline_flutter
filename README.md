@@ -11,7 +11,6 @@ A Flutter plugin that provides a seamless integration of BudPay's inline payment
 - [Getting Started](#getting-started)
 - [Usage](#usage)
 - [API Reference](#api-reference)
-- [Example](#example)
 - [Platform-specific Setup](#platform-specific-setup)
   - [Android](#android)
   - [iOS](#ios)
