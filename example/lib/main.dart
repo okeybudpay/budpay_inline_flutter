@@ -7,6 +7,8 @@ class MyApp extends StatelessWidget {
   final TextEditingController emailController = TextEditingController(text: 'test@example.com');
   final TextEditingController amountController = TextEditingController(text: '1000');
 
+  MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -33,7 +35,7 @@ class MyApp extends StatelessWidget {
                   onPressed: () {
                     _startPayment(context);
                   },
-                  child: Text('Pay'),
+                  child: const Text('Pay'),
                 ),
               ],
             ),

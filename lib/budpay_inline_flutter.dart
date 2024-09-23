@@ -45,7 +45,7 @@ class BudpayInlinePayment extends StatefulWidget {
 
 class _BudpayInlinePaymentState extends State<BudpayInlinePayment> {
   late final WebViewController _webViewController;
-  bool _isLoading = true;
+  // bool _isLoading = true;
 
   late String _localFilePath;
   bool _isControllerReady = false;
@@ -72,9 +72,9 @@ class _BudpayInlinePaymentState extends State<BudpayInlinePayment> {
       ..setNavigationDelegate(
         NavigationDelegate(
           onPageFinished: (url) {
-            setState(() {
-              _isLoading = false;
-            });
+            // setState(() {
+            //   _isLoading = false;
+            // });
           },
         ),
       )
@@ -130,7 +130,7 @@ class _BudpayInlinePaymentState extends State<BudpayInlinePayment> {
   }
 
   @override
- Widget build(BuildContext context) {
+Widget build(BuildContext context) {
   return Scaffold(
     body: Stack(
       children: [
@@ -138,10 +138,23 @@ class _BudpayInlinePaymentState extends State<BudpayInlinePayment> {
         if (_isControllerReady)
           WebViewWidget(controller: _webViewController),
         // if (_isLoading) const Center(child: CircularProgressIndicator()),
+
+        Positioned(
+          top: 20.0,
+          left: 5.0,
+          child: IconButton(
+            icon: const Icon(Icons.close),
+            onPressed: () {
+              widget.onCancel();
+              Navigator.of(context).pop();
+            },
+          ),
+        ),
       ],
     ),
   );
 }
+
 
 
   void _handleJavascriptMessage(String message) {
