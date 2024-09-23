@@ -332,7 +332,7 @@ For any issues or questions, please create an issue on the [GitHub repository](h
 
 If you have any questions or need support, please contact:
 
-- **Email**: [okey@budpay.com](mailto:okey@budpay.com)
+- **Email**: [developers@budpay.com](mailto:developers@budpay.com)
 - **GitHub**: [https://github.com/okeybudpay](https://github.com/okeybudpay)
 
 ---

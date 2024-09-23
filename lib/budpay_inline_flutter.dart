@@ -48,6 +48,7 @@ class _BudpayInlinePaymentState extends State<BudpayInlinePayment> {
   bool _isLoading = true;
 
   late String _localFilePath;
+  bool _isControllerReady = false;
 
   @override
   void initState() {
@@ -78,6 +79,9 @@ class _BudpayInlinePaymentState extends State<BudpayInlinePayment> {
         ),
       )
       ..loadFile(_localFilePath);
+       setState(() {
+      _isControllerReady = true;
+    });
   }
 
   Future<void> _createLocalHtmlFile() async {
@@ -126,28 +130,19 @@ class _BudpayInlinePaymentState extends State<BudpayInlinePayment> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('BudPay Payment'),
-        leading: IconButton(
-          icon: const Icon(Icons.close),
-          onPressed: () {
-            widget.onCancel();
-            Navigator.of(context).pop();
-          },
-        ),
-      ),
-      body: Stack(
-        children: [
-          // ignore: unnecessary_null_comparison
-          if (_webViewController != null)
-            WebViewWidget(controller: _webViewController),
-          if (_isLoading) const Center(child: CircularProgressIndicator()),
-        ],
-      ),
-    );
-  }
+ Widget build(BuildContext context) {
+  return Scaffold(
+    body: Stack(
+      children: [
+        // ignore: unnecessary_null_comparison
+        if (_isControllerReady)
+          WebViewWidget(controller: _webViewController),
+        // if (_isLoading) const Center(child: CircularProgressIndicator()),
+      ],
+    ),
+  );
+}
+
 
   void _handleJavascriptMessage(String message) {
     final Map<String, dynamic> result = jsonDecode(message);

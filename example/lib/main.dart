@@ -13,22 +13,22 @@ class MyApp extends StatelessWidget {
       title: 'BudPay Inline Flutter Example',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('BudPay Inline Flutter Example'),
+          title: const Text('BudPay Inline Flutter Example'),
         ),
         body: Padding(
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           child: Builder(
             builder: (context) => Column(
               children: [
                 TextField(
                   controller: emailController,
-                  decoration: InputDecoration(labelText: 'E-mail Address'),
+                  decoration: const InputDecoration(labelText: 'E-mail Address'),
                 ),
                 TextField(
                   controller: amountController,
-                  decoration: InputDecoration(labelText: 'Amount'),
+                  decoration: const InputDecoration(labelText: 'Amount'),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
                     _startPayment(context);
@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => BudpayInlinePayment(
-          publicKey: 'pk_test_1l1tc42mghjbmggcjlebshvngtjsvlqjycol4n', // Replace with your public key
+          publicKey: 'pk_test_xolsnu5dpqpia2a7a8iftygugzyluz2qffkhlid', // Replace with your public key
           email: emailController.text,
           amount: amountController.text,
           firstName: 'John',
@@ -61,7 +61,7 @@ class MyApp extends StatelessWidget {
           },
           onCancel: () {
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('Transaction was not completed, window closed.')),
+              const SnackBar(content: Text('Transaction was not completed, window closed.')),
             );
           },
           onError: (error) {
@@ -69,7 +69,7 @@ class MyApp extends StatelessWidget {
               SnackBar(content: Text('An error occurred: $error')),
             );
           },
-          customFields: {
+          customFields: const {
             'tax_pay_transaction': '',
             'tax_pay_type': '',
             'agency_code': '',
