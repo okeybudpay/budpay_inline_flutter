@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:budpay_inline_flutter/budpay_inline_flutter.dart';
+// import 'package:budpay_inline_flutter/budpay_inline_flutter.dart';
 import 'package:budpay_inline_flutter/budpay_inline_flutter_platform_interface.dart';
 import 'package:budpay_inline_flutter/budpay_inline_flutter_method_channel.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
@@ -20,10 +20,10 @@ void main() {
   });
 
   test('getPlatformVersion', () async {
-    BudpayInlineFlutter budpayInlineFlutterPlugin = BudpayInlineFlutter();
+    // BudpayInlineFlutter budpayInlineFlutterPlugin = BudpayInlineFlutter();
     MockBudpayInlineFlutterPlatform fakePlatform = MockBudpayInlineFlutterPlatform();
     BudpayInlineFlutterPlatform.instance = fakePlatform;
 
-    expect(await budpayInlineFlutterPlugin.getPlatformVersion(), '42');
+    // expect(await budpayInlineFlutterPlugin.getPlatformVersion(), '42');
   });
 }

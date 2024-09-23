@@ -1,7 +1,7 @@
 name: budpay_inline_flutter
-description: "A new Flutter plugin project."
+description: "Budpay's flutter plugin for inline payments"
 version: 0.0.1
-homepage:
+homepage: https://github.com/okeybudpay/budpay_inline_flutter
 
 environment:
   sdk: ^3.6.0-270.0.dev
@@ -11,6 +11,9 @@ dependencies:
   flutter:
     sdk: flutter
   plugin_platform_interface: ^2.0.2
+  webview_flutter: ^4.9.0
+  path_provider: ^2.1.4
+
 
 dev_dependencies:
   flutter_test:
