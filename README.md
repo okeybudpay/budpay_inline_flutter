@@ -45,7 +45,7 @@ dependencies:
   budpay_inline_flutter: ^0.0.1  # Replace with the latest version
 ```
 
-Replace `^1.0.0` with the latest version of the plugin as specified on [pub.dev](https://pub.dev/packages/budpay_inline_flutter).
+Replace `^0.0.1` with the latest version of the plugin as specified on [pub.dev](https://pub.dev/packages/budpay_inline_flutter).
 
 Then run:
 
@@ -164,99 +164,6 @@ A widget that initiates the BudPay inline payment process.
 | `onSuccess`    | `Function(dynamic)`        | Yes      | Callback function invoked on successful payment.                            |
 | `onError`      | `Function(dynamic)`        | Yes      | Callback function invoked when an error occurs.                             |
 | `onCancel`     | `Function()`               | Yes      | Callback function invoked when the payment is canceled by the user.         |
-
----
-
-## Example
-
-Below is a complete example demonstrating how to use the `budpay_inline_flutter` plugin.
-
-### **main.dart**
-
-```dart
-import 'package:flutter/material.dart';
-import 'package:budpay_inline_flutter/budpay_inline_flutter.dart';
-
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  final TextEditingController emailController = TextEditingController(text: 'test@example.com');
-  final TextEditingController amountController = TextEditingController(text: '1000');
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'BudPay Inline Flutter Example',
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('BudPay Inline Flutter Example'),
-        ),
-        body: Padding(
-          padding: EdgeInsets.all(16.0),
-          child: Builder(
-            builder: (context) => Column(
-              children: [
-                TextField(
-                  controller: emailController,
-                  decoration: InputDecoration(labelText: 'E-mail Address'),
-                ),
-                TextField(
-                  controller: amountController,
-                  decoration: InputDecoration(labelText: 'Amount'),
-                ),
-                SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: () {
-                    _startPayment(context);
-                  },
-                  child: Text('Pay'),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  void _startPayment(BuildContext context) {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => BudpayInlinePayment(
-          publicKey: 'YOUR_PUBLIC_KEY', // Replace with your public key
-          email: emailController.text,
-          amount: amountController.text,
-          firstName: 'John',
-          lastName: 'Doe',
-          currency: 'NGN',
-          reference: DateTime.now().millisecondsSinceEpoch.toString(),
-          onSuccess: (response) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('Payment complete! Reference: ${response['reference']}, Status: ${response['status']}')),
-            );
-          },
-          onCancel: () {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('Transaction was not completed, window closed.')),
-            );
-          },
-          onError: (error) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('An error occurred: $error')),
-            );
-          },
-          customFields: {
-            'custom_field_1': 'value1',
-            'custom_field_2': 'value2',
-          },
-        ),
-      ),
-    );
-  }
-}
-```
-
-Replace `'YOUR_PUBLIC_KEY'` with your actual BudPay public key.
 
 ---
 
