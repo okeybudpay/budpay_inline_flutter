@@ -1,4 +1,6 @@
-// ignore_for_file: library_private_types_in_public_api
+/// A Flutter plugin for integrating BudPay's inline payment system.
+///
+/// Provides the [BudpayInlinePayment] widget to initiate and manage BudPay payments within Flutter apps.
 
 import 'dart:io';
 
@@ -7,23 +9,75 @@ import 'package:path_provider/path_provider.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'dart:convert';
 
+/// A widget that integrates BudPay's inline payment system into your Flutter app.
+///
+/// This widget opens a WebView that loads the BudPay payment gateway,
+/// allowing users to complete transactions within your app.
+///
+/// Example usage:
+/// ```dart
+/// BudpayInlinePayment(
+///   publicKey: 'your-public-key',
+///   email: 'customer@example.com',
+///   amount: '1000',
+///   currency: 'NGN',
+///   reference: 'txn_1234567890',
+///   onSuccess: (response) {
+///     // Handle successful payment
+///   },
+///   onError: (error) {
+///     // Handle payment error
+///   },
+///   onCancel: () {
+///     // Handle payment cancellation
+///   },
+/// );
+/// ```
 class BudpayInlinePayment extends StatefulWidget {
+  /// Your BudPay public key.
   final String publicKey;
+
+  /// Customer's email address.
   final String email;
+
+  /// The transaction amount as a string.
   final String amount;
+
+  /// Customer's first name (optional).
   final String? firstName;
+
+  /// Customer's last name (optional).
   final String? lastName;
+
+  /// The currency code (e.g., 'NGN', 'USD').
   final String currency;
+
+  /// Unique transaction reference (optional).
   final String? reference;
+
+  /// Custom logo URL for the payment popup (optional).
   final String? logoUrl;
+
+  /// The URL to which BudPay sends payment notifications (optional).
   final String? callbackUrl;
+
+  /// Additional custom fields as key-value pairs (optional).
   final Map<String, dynamic>? customFields;
+
+  /// Callback function that is called when the payment is successful.
   final Function(dynamic response) onSuccess;
+
+  /// Callback function that is called when an error occurs during the payment process.
   final Function(dynamic response) onError;
+
+  /// Callback function that is called when the user cancels the payment.
   final Function() onCancel;
 
+  /// Creates a new instance of [BudpayInlinePayment].
+  ///
+  /// The [publicKey], [email], [amount], [currency], [onSuccess], [onError], and [onCancel] parameters are required.
   const BudpayInlinePayment({
-    super.key,
+    Key? key,
     required this.publicKey,
     required this.email,
     required this.amount,
@@ -37,15 +91,17 @@ class BudpayInlinePayment extends StatefulWidget {
     required this.onSuccess,
     required this.onError,
     required this.onCancel,
-  });
+  }) : super(key: key);
 
   @override
-  _BudpayInlinePaymentState createState() => _BudpayInlinePaymentState();
+  BudpayInlinePaymentState createState() => BudpayInlinePaymentState();
 }
 
-class _BudpayInlinePaymentState extends State<BudpayInlinePayment> {
+/// The state class for [BudpayInlinePayment].
+///
+/// Handles the WebView initialization and communication with the BudPay payment gateway.
+class BudpayInlinePaymentState extends State<BudpayInlinePayment> {
   late final WebViewController _webViewController;
-  // bool _isLoading = true;
 
   late String _localFilePath;
   bool _isControllerReady = false;
@@ -60,6 +116,7 @@ class _BudpayInlinePaymentState extends State<BudpayInlinePayment> {
     });
   }
 
+  /// Initializes the WebView controller and sets up the JavaScript channel.
   void _initializeWebView() {
     _webViewController = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
@@ -72,9 +129,7 @@ class _BudpayInlinePaymentState extends State<BudpayInlinePayment> {
       ..setNavigationDelegate(
         NavigationDelegate(
           onPageFinished: (url) {
-            // setState(() {
-            //   _isLoading = false;
-            // });
+            // Handle page load completion if needed
           },
         ),
       )
@@ -84,6 +139,7 @@ class _BudpayInlinePaymentState extends State<BudpayInlinePayment> {
     });
   }
 
+  /// Creates a local HTML file with the necessary content to initiate the BudPay payment.
   Future<void> _createLocalHtmlFile() async {
     final customFieldsJson =
         widget.customFields != null ? jsonEncode(widget.customFields) : '{}';
@@ -134,10 +190,7 @@ class _BudpayInlinePaymentState extends State<BudpayInlinePayment> {
     return Scaffold(
       body: Stack(
         children: [
-          // ignore: unnecessary_null_comparison
           if (_isControllerReady) WebViewWidget(controller: _webViewController),
-          // if (_isLoading) const Center(child: CircularProgressIndicator()),
-
           Positioned(
             top: 20.0,
             left: 5.0,
@@ -154,6 +207,9 @@ class _BudpayInlinePaymentState extends State<BudpayInlinePayment> {
     );
   }
 
+  /// Handles messages received from the JavaScript code in the WebView.
+  ///
+  /// Parses the message and triggers the appropriate callbacks.
   void _handleJavascriptMessage(String message) {
     final Map<String, dynamic> result = jsonDecode(message);
     if (result['status'] == 'success') {

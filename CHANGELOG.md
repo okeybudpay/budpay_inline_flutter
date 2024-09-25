@@ -3,9 +3,22 @@
 ### Changed
 
 - **Updated to Stable Dart and Flutter SDK Versions**
-
   - Updated `pubspec.yaml` to use stable Dart SDK (`>=3.0.0 <4.0.0`) and Flutter SDK (`>=3.0.0`).
   - Adjusted dev dependencies to ensure compatibility with stable releases.
+
+
+### Fixed
+
+- **Resolved Linting Issue with Private Type in Public API**
+  - Made `BudpayInlinePaymentState` public to comply with Dart's visibility rules.
+  - Ensured all public API elements use public types to prevent any exposure of private types.
+
+### Added
+
+- **Comprehensive Documentation**
+  - Added detailed documentation comments to all public classes, methods, and properties.
+  - Enabled the `public_member_api_docs` lint rule to enforce documentation standards.
+  - Improved code readability and maintainability.
 
 ---
 
@@ -59,4 +72,7 @@
 
 ---
 
-**Release Date**: `2024-09-25`
+**Release Dates:**
+
+- **Version 0.0.2**: 2024-09-25
+- **Version 0.0.1**: 2024-09-23

@@ -9,6 +9,9 @@ class MethodChannelBudpayInlineFlutter extends BudpayInlineFlutterPlatform {
   @visibleForTesting
   final methodChannel = const MethodChannel('budpay_inline_flutter');
 
+  /// Retrieves the platform version from the native platform.
+  ///
+  /// Returns a [String] containing the platform version.
   @override
   Future<String?> getPlatformVersion() async {
     final version =
