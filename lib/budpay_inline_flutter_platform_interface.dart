@@ -8,7 +8,8 @@ abstract class BudpayInlineFlutterPlatform extends PlatformInterface {
 
   static final Object _token = Object();
 
-  static BudpayInlineFlutterPlatform _instance = MethodChannelBudpayInlineFlutter();
+  static BudpayInlineFlutterPlatform _instance =
+      MethodChannelBudpayInlineFlutter();
 
   /// The default instance of [BudpayInlineFlutterPlatform] to use.
   ///

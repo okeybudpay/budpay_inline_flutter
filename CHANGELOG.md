@@ -1,3 +1,14 @@
+## [0.0.2] - 2024-09-25
+
+### Changed
+
+- **Updated to Stable Dart and Flutter SDK Versions**
+
+  - Updated `pubspec.yaml` to use stable Dart SDK (`>=3.0.0 <4.0.0`) and Flutter SDK (`>=3.0.0`).
+  - Adjusted dev dependencies to ensure compatibility with stable releases.
+
+---
+
 ## [0.0.1] - 2024-09-23
 
 ### Added
@@ -9,26 +20,14 @@
 - **Core Features**
 
   - **`BudpayInlinePayment` Widget**: A customizable widget to initiate and manage BudPay payments within Flutter apps.
-  
   - **Payment Parameters**: Support for essential payment parameters:
-    - `publicKey`: Your BudPay public key.
-    - `email`: Customer's email address.
-    - `amount`: Transaction amount.
-    - `firstName` and `lastName`: Customer's name.
-    - `currency`: Currency code (e.g., `NGN`, `USD`).
-    - `reference`: Unique transaction reference.
-    - `logoUrl`: Custom logo URL for the payment popup.
-    - `callbackUrl`: Custom callback URL for payment notifications.
-    - `customFields`: Additional custom fields as key-value pairs.
-  
+    - `publicKey`, `email`, `amount`, `firstName`, `lastName`, `currency`, `reference`, `logoUrl`, `callbackUrl`, `customFields`.
   - **Callbacks and Event Handling**:
-    - `onSuccess`: Callback for successful payment transactions.
-    - `onError`: Callback for handling errors during the payment process.
-    - `onCancel`: Callback for handling payment cancellations by the user.
+    - `onSuccess`, `onError`, `onCancel`.
 
 - **WebView Integration**
 
-  - Utilizes the latest `webview_flutter` package (`^4.9.0`) for embedding web content.
+  - Utilizes `webview_flutter` for embedding web content.
   - Loads BudPay's inline payment JavaScript securely within the WebView.
   - Handles communication between JavaScript and Flutter using JavaScript channels.
 
@@ -60,4 +59,4 @@
 
 ---
 
-**Release Date**: `2024-09-23`
+**Release Date**: `2024-09-25`

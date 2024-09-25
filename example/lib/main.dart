@@ -4,8 +4,10 @@ import 'package:budpay_inline_flutter/budpay_inline_flutter.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  final TextEditingController emailController = TextEditingController(text: 'test@example.com');
-  final TextEditingController amountController = TextEditingController(text: '1000');
+  final TextEditingController emailController =
+      TextEditingController(text: 'test@example.com');
+  final TextEditingController amountController =
+      TextEditingController(text: '1000');
 
   MyApp({super.key});
 
@@ -24,7 +26,8 @@ class MyApp extends StatelessWidget {
               children: [
                 TextField(
                   controller: emailController,
-                  decoration: const InputDecoration(labelText: 'E-mail Address'),
+                  decoration:
+                      const InputDecoration(labelText: 'E-mail Address'),
                 ),
                 TextField(
                   controller: amountController,
@@ -49,7 +52,8 @@ class MyApp extends StatelessWidget {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => BudpayInlinePayment(
-          publicKey: 'pk_test_xolsnu5dpqpia2a7a8iftygugzyluz2qffkhlid', // Replace with your public key
+          publicKey:
+              'pk_test_xolsnu5dpqpia2a7a8iftygugzyluz2qffkhlid', // Replace with your public key
           email: emailController.text,
           amount: amountController.text,
           firstName: 'John',
@@ -58,12 +62,16 @@ class MyApp extends StatelessWidget {
           reference: DateTime.now().millisecondsSinceEpoch.toString(),
           onSuccess: (response) {
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('Payment complete! Reference: ${response['reference']}, Status: ${response['status']}')),
+              SnackBar(
+                  content: Text(
+                      'Payment complete! Reference: ${response['reference']}, Status: ${response['status']}')),
             );
           },
           onCancel: () {
             ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('Transaction was not completed, window closed.')),
+              const SnackBar(
+                  content:
+                      Text('Transaction was not completed, window closed.')),
             );
           },
           onError: (error) {

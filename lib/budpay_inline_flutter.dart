@@ -79,7 +79,7 @@ class _BudpayInlinePaymentState extends State<BudpayInlinePayment> {
         ),
       )
       ..loadFile(_localFilePath);
-       setState(() {
+    setState(() {
       _isControllerReady = true;
     });
   }
@@ -130,32 +130,29 @@ class _BudpayInlinePaymentState extends State<BudpayInlinePayment> {
   }
 
   @override
-Widget build(BuildContext context) {
-  return Scaffold(
-    body: Stack(
-      children: [
-        // ignore: unnecessary_null_comparison
-        if (_isControllerReady)
-          WebViewWidget(controller: _webViewController),
-        // if (_isLoading) const Center(child: CircularProgressIndicator()),
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        children: [
+          // ignore: unnecessary_null_comparison
+          if (_isControllerReady) WebViewWidget(controller: _webViewController),
+          // if (_isLoading) const Center(child: CircularProgressIndicator()),
 
-        Positioned(
-          top: 20.0,
-          left: 5.0,
-          child: IconButton(
-            icon: const Icon(Icons.close),
-            onPressed: () {
-              widget.onCancel();
-              Navigator.of(context).pop();
-            },
+          Positioned(
+            top: 20.0,
+            left: 5.0,
+            child: IconButton(
+              icon: const Icon(Icons.close),
+              onPressed: () {
+                widget.onCancel();
+                Navigator.of(context).pop();
+              },
+            ),
           ),
-        ),
-      ],
-    ),
-  );
-}
-
-
+        ],
+      ),
+    );
+  }
 
   void _handleJavascriptMessage(String message) {
     final Map<String, dynamic> result = jsonDecode(message);

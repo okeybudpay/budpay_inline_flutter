@@ -7,13 +7,13 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 class MockBudpayInlineFlutterPlatform
     with MockPlatformInterfaceMixin
     implements BudpayInlineFlutterPlatform {
-
   @override
   Future<String?> getPlatformVersion() => Future.value('42');
 }
 
 void main() {
-  final BudpayInlineFlutterPlatform initialPlatform = BudpayInlineFlutterPlatform.instance;
+  final BudpayInlineFlutterPlatform initialPlatform =
+      BudpayInlineFlutterPlatform.instance;
 
   test('$MethodChannelBudpayInlineFlutter is the default instance', () {
     expect(initialPlatform, isInstanceOf<MethodChannelBudpayInlineFlutter>());
@@ -21,7 +21,8 @@ void main() {
 
   test('getPlatformVersion', () async {
     // BudpayInlineFlutter budpayInlineFlutterPlugin = BudpayInlineFlutter();
-    MockBudpayInlineFlutterPlatform fakePlatform = MockBudpayInlineFlutterPlatform();
+    MockBudpayInlineFlutterPlatform fakePlatform =
+        MockBudpayInlineFlutterPlatform();
     BudpayInlineFlutterPlatform.instance = fakePlatform;
 
     // expect(await budpayInlineFlutterPlugin.getPlatformVersion(), '42');
