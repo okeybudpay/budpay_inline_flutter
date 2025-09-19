@@ -26,7 +26,7 @@ abstract class BudpayInlineFlutterPlatform extends PlatformInterface {
   /// platform-specific class that extends [BudpayInlineFlutterPlatform] when
   /// they register themselves.
   static set instance(BudpayInlineFlutterPlatform instance) {
-    PlatformInterface.verifyToken(instance, _token);
+    PlatformInterface.verify(instance, _token);
     _instance = instance;
   }
 

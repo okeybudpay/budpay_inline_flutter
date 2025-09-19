@@ -1,9 +1,9 @@
 /// A Flutter plugin for integrating BudPay's inline payment system.
 ///
 /// Provides the [BudpayInlinePayment] widget to initiate and manage BudPay payments within Flutter apps.
+library budpay_inline_flutter;
 
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:webview_flutter/webview_flutter.dart';

@@ -1,3 +1,15 @@
+## [0.0.3] - 2025-09-17
+
+### Changed
+
+- **Updated Dependencies**
+  - Updated `path_provider` to version `^2.1.5`
+  - Updated `flutter_lints` to version `^6.0.0`
+  - Updated `plugin_platform_interface` to version `^2.1.8`
+  - Updated `webview_flutter` to version `^4.13.0`
+
+---
+
 ## [0.0.2] - 2024-09-25
 
 ### Changed

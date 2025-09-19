@@ -1,6 +1,6 @@
 name: budpay_inline_flutter
-description: "Budpay's flutter plugin for making payments via BudPay inline Payment Gateway. Supports Android and iOS platforms"
-version: 0.0.2
+description: Budpay's flutter plugin for making payments via BudPay inline Payment Gateway. Supports Android and iOS platforms
+version: 0.0.3
 homepage: https://github.com/okeybudpay/budpay_inline_flutter
 
 environment:
@@ -10,14 +10,14 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  plugin_platform_interface: ^2.0.2
-  webview_flutter: ^4.9.0
-  path_provider: ^2.1.4
+  plugin_platform_interface: ^2.1.8
+  webview_flutter: ^4.13.0
+  path_provider: ^2.1.5
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_lints: ^6.0.0
 
 flutter:
   plugin:
