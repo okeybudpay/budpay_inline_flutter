@@ -1,6 +1,7 @@
 /// A Flutter plugin for integrating BudPay's inline payment system.
 ///
 /// Provides the [BudpayInlinePayment] widget to initiate and manage BudPay payments within Flutter apps.
+
 library budpay_inline_flutter;
 
 import 'dart:io';
@@ -77,7 +78,7 @@ class BudpayInlinePayment extends StatefulWidget {
   ///
   /// The [publicKey], [email], [amount], [currency], [onSuccess], [onError], and [onCancel] parameters are required.
   const BudpayInlinePayment({
-    Key? key,
+    super.key,
     required this.publicKey,
     required this.email,
     required this.amount,
@@ -91,7 +92,7 @@ class BudpayInlinePayment extends StatefulWidget {
     required this.onSuccess,
     required this.onError,
     required this.onCancel,
-  }) : super(key: key);
+  });
 
   @override
   BudpayInlinePaymentState createState() => BudpayInlinePaymentState();
