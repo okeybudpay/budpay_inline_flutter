@@ -1,3 +1,11 @@
+# budpay_inline_flutter
+
+[![pub package](https://img.shields.io/pub/v/budpay_inline_flutter.svg)](https://pub.dev/packages/budpay_inline_flutter)
+[![pub points](https://img.shields.io/pub/points/budpay_inline_flutter?logo=dart)](https://pub.dev/packages/budpay_inline_flutter/score)
+[![CI](https://github.com/okeybudpay/budpay_inline_flutter/actions/workflows/ci.yml/badge.svg)](https://github.com/okeybudpay/budpay_inline_flutter/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![style: dart](https://img.shields.io/badge/style-dart-40c4ff.svg)](https://dart.dev/guides/language/effective-dart/style)
+
 # BudPay Inline Flutter Plugin
 
 A Flutter plugin that provides a seamless integration of BudPay's inline payment system for **Android** and **iOS** platforms. This plugin wraps the existing BudPay JavaScript inline payment solution within a WebView, allowing you to accept payments in your Flutter applications with ease.
